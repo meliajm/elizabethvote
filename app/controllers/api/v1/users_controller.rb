@@ -1,12 +1,9 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::UsersController < SecuredController
 
     # GET /users
     def index
-        if user_params.password == '1'
-            puts user_params.password
-            @users = User.all
-            render json: @users
-        end
+        @users = User.all
+        render json: @users
     end
 
     # GET /user/:id
