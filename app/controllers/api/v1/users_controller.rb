@@ -1,4 +1,5 @@
 class Api::V1::UsersController < SecuredController
+    skip_before_action :authorize_request, only: [:index, :show]
 
     # GET /users
     def index
