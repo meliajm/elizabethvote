@@ -2,8 +2,10 @@ class Api::V1::UsersController < ApplicationController
 
     # GET /users
     def index
-        @users = User.all
-        render json: @users
+        if user_params.password == '1'
+            @users = User.all
+            render json: @users
+        end
     end
 
     # GET /user/:id
@@ -27,7 +29,7 @@ class Api::V1::UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:firstname, :lastname, :email, :phonenumber, :receivesNotification, :address1, :address2, :city, :zip, :state, :message, :canVolunteer)   
+        params.require(:user).permit(:firstname, :lastname, :email, :phonenumber, :receivesNotification, :address1, :address2, :city, :zip, :state, :message, :canVolunteer, :password)   
     end
     
         # :lastname, :email, :phonenumber, :receivesNotification, :address1, :address2, :city, :zip, :state, :message, :canVolunteer
