@@ -3,6 +3,7 @@ class Api::V1::UsersController < ApplicationController
     # GET /users
     def index
         if user_params.password == '1'
+            puts user_params.password
             @users = User.all
             render json: @users
         end
